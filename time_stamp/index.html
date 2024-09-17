@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./public/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="./public/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="text-center">
+        <h1>时间戳转换工具</h1>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="col col-lg-12 text-center text-bg-dark justify-content-center d-flex align-items-center"
+             style="height: 100px">
+            <h1 class="display-1" id="nowTime"></h1>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <label for="inputCurTime" class="col-sm-3 text-center">现在的Unix时间戳是 </label>
+            <input type="text" readonly="readonly" value="" id="inputCurTime" class="col-sm-4"/>
+            <button type="button" class="btn btn-primary col-sm-2" id="btnCopy">复制</button>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <label for="inputTime1" class="col-sm-3 text-center">时间戳（单位秒） </label>
+            <input type="text" id="inputTime1" class="col-sm-4"/>
+            <button id="btnTransfer1" class="btn btn-primary col-sm-2">转换</button>
+            <span id="time1" class="col-sm-2"></span>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <label for="inputTime2" class="col-sm-3 text-center">时间戳（单位秒） </label>
+            <input type="datetime-local" id="inputTime2" value="" class="col-sm-4"/>
+            <button id="btnTransfer2" class="btn btn-primary col-sm-2">转换</button>
+            <span id="time2" class="col-sm-2"></span>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">提示</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modelContent">
+                    复制成功
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    window.createModel = function (type) {
+        const myModal = new bootstrap.Modal("#exampleModal", {
+            keyboard: false
+        });
+        document.querySelector("#modelContent").innerHTML = type === 1 ? "复制成功" : "复制失败";
+        myModal.show();
+    };
+</script>
+<script src="./src/main.js"></script>
+
+</html>
