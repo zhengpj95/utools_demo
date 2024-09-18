@@ -77,15 +77,6 @@
 </div>
 </body>
 
-<script>
-    window.createModel = function (type) {
-        const myModal = new bootstrap.Modal("#exampleModal", {
-            keyboard: false
-        });
-        document.querySelector("#modelContent").innerHTML = type === 1 ? "复制成功" : "复制失败";
-        myModal.show();
-    };
-</script>
 <script src="./src/main.js"></script>
 
 </html>
