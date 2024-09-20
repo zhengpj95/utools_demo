@@ -2,11 +2,14 @@
   "main": "index.html",
   "preload": "preload.js",
   "logo": "logo.png",
+  "pluginSetting": {
+    "single": true
+  },
   "features": [
     {
-      "code": "click",
-      "explain": "scene click",
-      "cmds": ["屏幕点击","点击"]
+      "code": "scene auto click",
+      "explain": "屏幕自动连点器",
+      "cmds": ["屏幕点击","点击", "auto click", "自动连点器", "连点器"]
     }
   ]
 }
