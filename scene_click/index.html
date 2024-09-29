@@ -10,16 +10,25 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
+<div class="container" style="border: 1px solid red;">
     <div class="row text-center">
         <h1>自动连点器</h1>
     </div>
     <div class="row">
         <p><span style="color:#FF0000">注意：</span>点击添加位置按钮后，按住Ctrl+Alt+Z，获取鼠标位置。不需要点击鼠标，移动鼠标到指定位置再按Ctrl+Alt+Z
             即可。面板不可失去焦点，否则无法获取鼠标位置</p>
-        <p><span style="color:#FF0000">注意：</span>需要注册插件的全局快捷键，否则无法结束自动连点。在utools设置的全局能力下，添加快捷键快速打开此插件。</p>
+        <p><span style="color:#FF0000">注意：</span>需要注册插件的全局快捷键，否则无法结束自动连点。在utools设置的全局能力下，添加快捷键快速打开此插件。
+        </p>
     </div>
     <br>
+
+    <div class="row text-center" style="border: 1px solid green;">
+        <div class="col col-2 ">鼠标即点击位置</div>
+        <div class="col col-4">
+            <button type="button" class="btn btn-secondary btn-lg" id="btnOneClick">单点连点器开始</button>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col col-4">
             <button type="button" class="btn btn-primary btn-lg" id="btnClickAdd">添加位置</button>
