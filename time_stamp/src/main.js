@@ -2,7 +2,6 @@ utools.onPluginEnter(({ code, type, payload, option }) => {
   console.log("用户进入插件应用: ", `${code}, ${type}, ${payload}, ${option}`);
 });
 
-./
 function setCurTime() {
   const inputCurTime = document.getElementById("inputCurTime");
   inputCurTime.value = window.getCurTime();
