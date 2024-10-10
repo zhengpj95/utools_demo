@@ -1,0 +1,16 @@
+{
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "auto_click",
+      "explain": "自动点击，自动抽奖",
+      "cmds": [
+        "auto click",
+        "autoclick",
+        "自动点击"
+      ]
+    }
+  ]
+}

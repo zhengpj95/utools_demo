@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./public/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="./public/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app" class="container">
+    <div class="text-center">
+        <h1>自动点击</h1>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="inputTime1" class="col-3">间隔时间（单位毫秒） </label>
+            <input type="number" id="inputTime1" class="col-4" maxlength="8" value="1000"/>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <label for="inputTime2" class="col-3">点击次数</label>
+            <input type="number" id="inputTime2" class="col-4" maxlength="4" value="5"/>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <span id="pointInfo"></span>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-secondary col-4" id="btnGetPoint">获取位置</button>
+            <button type="button" class="btn btn-primary col-4" id="btnStart">开始</button>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="./src/main.js"></script>
+
+</html>

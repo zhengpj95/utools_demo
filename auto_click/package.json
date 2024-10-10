@@ -1,5 +1,5 @@
 {
-  "name": "bailianyingxiong_lottery",
+  "name": "auto_click",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,5 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dayjs": "^1.11.13"
+  }
 }

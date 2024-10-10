@@ -118,16 +118,21 @@ const btnOneClick = document.querySelector("#btnOneClick");
 btnOneClick.onclick = function (e) {
   resetOneClick();
   oneClickState = !oneClickState;
-  if (oneClickState) {
-    oneClickKey = setInterval(() => {
-      onClickCnt++;
-      // if (onClickCnt > 20) {
-      //   clearInterval(oneClickKey);
-      //   return;
-      // }
-      let point = utools.getCursorScreenPoint();
-      window.utools.simulateMouseClick(point.x, point.y);
-      window.utools.hideMainWindow();
-    }, 500);
-  }
+  utools.screenColorPick(({hex, rgb})=>{
+    console.log(hex) // #FFFFFF
+    console.log(rgb) // RGB(0, 0, 0)
+    console.log(utools.getCursorScreenPoint());
+  })
+  // if (oneClickState) {
+  //   oneClickKey = setInterval(() => {
+  //     onClickCnt++;
+  //     // if (onClickCnt > 20) {
+  //     //   clearInterval(oneClickKey);
+  //     //   return;
+  //     // }
+  //     let point = utools.getCursorScreenPoint();
+  //     window.utools.simulateMouseClick(point.x, point.y);
+  //     window.utools.hideMainWindow();
+  //   }, 500);
+  // }
 };
