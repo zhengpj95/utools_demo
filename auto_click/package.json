@@ -11,5 +11,8 @@
   "description": "",
   "dependencies": {
     "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
+    "utools-api-types": "^5.2.0"
   }
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/utools-api-types/resource/utools.schema.json",
   "main": "index.html",
   "logo": "logo.png",
   "preload": "preload.js",
