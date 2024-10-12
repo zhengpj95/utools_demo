@@ -49,8 +49,12 @@ function clickConfirm() {
   toggleFlag = true;
 }
 
+function getTimeFormat() {
+  return dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")
+}
+
 let toggleFlag = false;
-let interval = 5000;
+let interval = 0;
 let intervalKey = 0;
 
 function autoInterval() {
@@ -66,8 +70,7 @@ function autoInterval() {
       clearInterval(intervalKey);
       return;
     }
-    const dayStr = dayjs().format("YYYY-MM-DD HH:mm:ss.SSS");
-    console.log(dayStr, toggleFlag, time);
+    console.log(getTimeFormat(), toggleFlag, time);
     if (toggleFlag) {
       clickCancel();
     } else {
@@ -77,10 +80,9 @@ function autoInterval() {
 }
 
 function main(interval1, clickCnt1) {
-  console.log("点击位置列表：", pointList);
-  interval = interval1;
-  autoClickCnt = clickCnt1;
-  // getSceneColor();
+  interval = +interval1;
+  autoClickCnt = +clickCnt1;
+  console.log("点击位置列表：", interval, autoClickCnt, pointList);
   startAutoByPointList();
 }
 
@@ -90,7 +92,7 @@ function startAutoByPointList() {
     return;
   }
   utools.showNotification("开始自动点击!!!");
-  console.log(dayjs().format("YYYY-MM-DD HH:mm:ss.SSS"), `开始自动点击!!!`);
+  console.log(getTimeFormat(), `开始自动点击!!!`);
   startAutoInterval();
 }
 
@@ -101,10 +103,11 @@ function startAutoInterval() {
   let roundTime = 0;
   pointIdx = 0;
   intervalKey = setInterval(() => {
+    console.log(getTimeFormat(), pointIdx, interval);
     if (roundTime >= autoClickCnt) {
       clearInterval(intervalKey);
       utools.showNotification("结束自动点击!!!");
-      console.log(dayjs().format("YYYY-MM-DD HH:mm:ss.SSS"), `结束自动点击!!!`);
+      console.log(getTimeFormat(), `结束自动点击!!!`);
       return;
     }
     const point = pointList[pointIdx];
@@ -121,7 +124,7 @@ function setClick(point) {
   if (!point) {
     return;
   }
-  utools.simulateMouseMove(point.x, point.y);
+  // utools.simulateMouseMove(point.x, point.y);
   utools.simulateMouseClick(point.x, point.y);
 }
 
@@ -133,5 +136,12 @@ function getScenePoint(func) {
   });
 }
 
+function resetAutoClick() {
+  clearInterval(intervalKey);
+  interval = 0;
+  intervalKey = 0;
+}
+
 window.main = main;
 window.getScenePoint = getScenePoint;
+window.resetAutoClick = resetAutoClick;
