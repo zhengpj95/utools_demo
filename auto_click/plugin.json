@@ -9,8 +9,6 @@
       "explain": "自动点击，自动抽奖",
       "cmds": [
         "autoClick",
-        "auto_click",
-        "autoclick",
         "自动点击",
         "AutoClickMore"
       ]
