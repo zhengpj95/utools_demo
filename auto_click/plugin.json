@@ -5,10 +5,11 @@
   "preload": "preload.js",
   "features": [
     {
-      "code": "auto_click",
+      "code": "autoClick",
       "explain": "自动点击，自动抽奖",
       "cmds": [
-        "auto click",
+        "autoClick",
+        "auto_click",
         "autoclick",
         "自动点击",
         "AutoClickMore"
