@@ -60,7 +60,6 @@ class Timer {
       if (item && item.method) {
         if (item.extTime <= curTime) {
           item.method.call(item.methodObj, curTime - item.dealTime);
-          console.log(`111112 `, getTimeFormat(), curTime, item);
           item.extTime = curTime + item.delay; // 下次执行时间
           item.dealTime = curTime; // 此次执行时间
         }
@@ -69,7 +68,16 @@ class Timer {
   }
 }
 
+let timer = new Timer();
+
+function createTimer() {
+  if (!timer) {
+    timer = new Timer();
+  }
+}
+
 function tick() {
+  createTimer();
   timer.tick();
 }
 
@@ -77,7 +85,21 @@ function now() {
   return Date.now();
 }
 
-setInterval(tick, 0);
+let _timerIntervalKey = 0;
 
-const timer = new Timer();
-module.exports = timer;
+function startTick() {
+  console.log(`11111 timer startTick: ${_timerIntervalKey}`);
+  clearInterval(_timerIntervalKey);
+  _timerIntervalKey = setInterval(tick, 0);
+}
+
+function clearTick() {
+  console.log(`11111 timer clearTick: ${_timerIntervalKey}`);
+  clearInterval(_timerIntervalKey);
+  _timerIntervalKey = 0;
+  timer.timerList.length = 0;
+}
+
+module.exports = {
+  timer, startTick, clearTick
+};

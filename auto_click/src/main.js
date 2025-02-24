@@ -1,8 +1,4 @@
 // main.js
-utools.onPluginEnter(({ code, type, payload, option }) => {
-  console.log("用户进入插件应用: ", `${code}, ${type}, ${payload}, ${option}`);
-  resetAutoClick();
-});
 
 const pointList = [];
 
@@ -13,6 +9,7 @@ btnStart.onclick = function (e) {
   const inputTime2 = document.querySelector("#inputTime2");
   const cnt = inputTime2.value;
   if (!pointList.length) {
+    utools.showNotification(`没有获取位置，无法开启!`);
     return;
   }
   window.main(time, cnt);
