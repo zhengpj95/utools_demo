@@ -1,5 +1,6 @@
-const { getTimeFormat } = require("./utils");
-
+/**
+ * 定时器
+ */
 class Timer {
   /**
    * @type {{ method:any, methodObj:any, delay:number, extTime:number, dealTime:number }[]}
@@ -70,17 +71,6 @@ class Timer {
 
 let timer = new Timer();
 
-function createTimer() {
-  if (!timer) {
-    timer = new Timer();
-  }
-}
-
-function tick() {
-  createTimer();
-  timer.tick();
-}
-
 function now() {
   return Date.now();
 }
@@ -90,7 +80,12 @@ let _timerIntervalKey = 0;
 function startTick() {
   console.log(`11111 timer startTick: ${_timerIntervalKey}`);
   clearInterval(_timerIntervalKey);
-  _timerIntervalKey = setInterval(tick, 0);
+  window.requestAnimationFrame(loop);
+}
+
+function loop(time) {
+  timer.tick();
+  window.requestAnimationFrame(loop);
 }
 
 function clearTick() {
