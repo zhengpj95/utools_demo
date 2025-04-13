@@ -5,11 +5,18 @@
   "features": [
     {
       "code": "time",
-      "explain": "time stamp",
+      "explain": "time",
       "cmds": [
         "time",
         "stamp",
         "时间戳"
+      ]
+    },
+    {
+      "code": "timestamp",
+      "explain": "timestamp",
+      "cmds": [
+        "timestamp"
       ]
     }
   ]

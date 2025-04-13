@@ -7,9 +7,14 @@
   },
   "features": [
     {
-      "code": "scene auto click",
-      "explain": "屏幕自动连点器",
-      "cmds": ["屏幕点击","点击", "auto click", "自动连点器", "连点器"]
+      "code": "AutoClickOne",
+      "explain": "单点连点器",
+      "cmds": ["AutoClickOne", "单点连点器"]
+    },
+    {
+      "code": "AutoClickMore",
+      "explain": "多点连点器",
+      "cmds": ["AutoClickMore", "多点连点器"]
     }
   ]
 }

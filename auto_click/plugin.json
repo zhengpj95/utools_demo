@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/utools-api-types/resource/utools.schema.json",
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "autoClick",
+      "explain": "自动点击，自动抽奖",
+      "cmds": [
+        "autoClick",
+        "自动点击",
+        "AutoClickMore"
+      ]
+    }
+  ]
+}

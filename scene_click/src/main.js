@@ -4,6 +4,8 @@ utools.onPluginEnter(({ code, type, payload, option }) => {
   isClickAdd = false;
   isStart = false;
   clearInterval(intervalKey);
+
+  resetOneClick();
 });
 
 utools.onPluginOut((processExit) => {
@@ -99,3 +101,38 @@ function startClick() {
     }
   }
 }
+
+// ================================单点连点器处理================================
+
+let oneClickKey = 0;
+let oneClickState = false;
+let onClickCnt = 0;
+
+function resetOneClick() {
+  clearInterval(oneClickKey);
+  oneClickState = false;
+  onClickCnt = 0;
+}
+
+const btnOneClick = document.querySelector("#btnOneClick");
+btnOneClick.onclick = function (e) {
+  resetOneClick();
+  oneClickState = !oneClickState;
+  utools.screenColorPick(({hex, rgb})=>{
+    console.log(hex) // #FFFFFF
+    console.log(rgb) // RGB(0, 0, 0)
+    console.log(utools.getCursorScreenPoint());
+  })
+  // if (oneClickState) {
+  //   oneClickKey = setInterval(() => {
+  //     onClickCnt++;
+  //     // if (onClickCnt > 20) {
+  //     //   clearInterval(oneClickKey);
+  //     //   return;
+  //     // }
+  //     let point = utools.getCursorScreenPoint();
+  //     window.utools.simulateMouseClick(point.x, point.y);
+  //     window.utools.hideMainWindow();
+  //   }, 500);
+  // }
+};
