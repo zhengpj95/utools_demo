@@ -1,9 +1,9 @@
 // preload.js
 
-const { getTimeFormat } = require("./src/utils");
-const { timer, clearTick, startTick } = require("./src/timer");
+const {getTimeFormat} = require("./src/utils");
+const {timer, clearTick, startTick} = require("./src/timer");
 
-utools.onPluginEnter(({ code, type, payload, option }) => {
+utools.onPluginEnter(({code, type, payload, option}) => {
   console.log("用户进入插件应用: ", `${code}, ${type}, ${payload}, ${option}`);
   resetAutoClick();
   clearTick();
@@ -15,7 +15,7 @@ let autoClickCnt = 10;
 let interval = 0;
 let intervalKey = 0;
 
-function main(interval1, clickCnt1) {
+function mainFunc(interval1, clickCnt1) {
   interval = +interval1;
   autoClickCnt = +clickCnt1;
   startAutoByPointList();
@@ -23,10 +23,11 @@ function main(interval1, clickCnt1) {
 
 function startAutoByPointList() {
   if (!pointList?.length) {
-    utools.showNotification(`没有获取位置，无法开启!`);
+    console.log(getTimeFormat(), `没有获取位置，无法开启!`);
     return;
   }
-  utools.showNotification("开始自动点击!!!");
+  // showModelData("开始自动点击!!!");
+  // utools.showNotification("开始自动点击!!!");
   console.log(getTimeFormat(), `开始自动点击!!!`);
   startAutoIntervalTimer();
 }
@@ -44,7 +45,8 @@ function startAutoIntervalTimer() {
 function addTick(elapsed) {
   if (roundTime >= autoClickCnt) {
     timer.remove(addTick, undefined);
-    utools.showNotification("结束自动点击!!!");
+    showModelData("结束自动点击!!!");
+    // utools.showNotification("结束自动点击!!!");
     console.log(getTimeFormat(), `结束自动点击!!!`);
     return;
   }
@@ -57,6 +59,9 @@ function addTick(elapsed) {
   }
 }
 
+/**
+ * @param {{x: number, y: number}} point
+ */
 function setClick(point) {
   if (!point) {
     return;
@@ -64,8 +69,13 @@ function setClick(point) {
   utools.simulateMouseClick(point.x, point.y);
 }
 
+/**
+ * 添加坐标信息
+ * @param {(hex: string, point: {x: number, y: number}) => void} func
+ * @returns {void}
+ */
 function getScenePoint(func) {
-  utools.screenColorPick(({ hex, rgb }) => {
+  utools.screenColorPick(({hex, rgb}) => {
     const point = utools.getCursorScreenPoint();
     func(hex, point);
   });
@@ -77,6 +87,6 @@ function resetAutoClick() {
   intervalKey = 0;
 }
 
-window.main = main;
+window.mainFunc = mainFunc;
 window.getScenePoint = getScenePoint;
 window.resetAutoClick = resetAutoClick;

@@ -12,6 +12,13 @@
     <script src="./public/bootstrap.min.js"
             integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
             crossorigin="anonymous"></script>
+    <style>
+        #checkBoxAuto {
+            accent-color: #ff5722; /* 修改为你想要的颜色 */
+            width: 20px; /* 可选：调整大小 */
+            height: 20px;
+        }
+    </style>
 </head>
 <body>
 <div id="app" class="container">
@@ -42,6 +49,13 @@
         </div>
     </div>
     <br>
+<!--    <div class="row">
+        <div class="col">
+            <label for="checkBoxAuto" class="col-3 form-check-label">提示与否</label>
+            <input type="checkbox" id="checkBoxAuto" class="col-4 form-check-input"/>
+        </div>
+    </div>
+    <br>-->
     <div class="row">
         <div class="col">
             <span id="pointInfo"></span>
@@ -54,6 +68,25 @@
             <button type="button" class="btn btn-secondary col-3" id="btnGetPoint">获取位置</button>
             <button type="button" class="btn btn-secondary col-3" id="btnClearPoint">清除位置</button>
             <button type="button" class="btn btn-primary col-3" id="btnStart">开始自动</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">提示</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modelContent">
+                    不可操作
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确认</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,3 +1,5 @@
+const {getTimeFormat} = require("./utils");
+
 /**
  * 定时器
  */
@@ -80,22 +82,16 @@ let _timerIntervalKey = 0;
 function startTick() {
   console.log(`11111 timer startTick: ${_timerIntervalKey}`);
   clearInterval(_timerIntervalKey);
-
-  window.requestAnimationFrame =
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame || //旧版本的 Chrome 和 Safari
-    window.mozRequestAnimationFrame || //旧版本的 Firefox
-    window.oRequestAnimationFrame || //旧版本的 Opera
-    window.msRequestAnimationFrame || //早期版本的 Internet Explorer
-    function(callback) {
-      return setTimeout(callback, 1000 / 60); // 降级为每秒60帧
-    };
-  window.requestAnimationFrame(loop);
+  _timerIntervalKey = setInterval(loop, 1000 / 60);
 }
 
+let _lastLoop = 0;
+
 function loop(time) {
+  const now = Date.now();
+  // console.log(`11111 lastLoop: ${getTimeFormat()} ${now - _lastLoop} `);
+  _lastLoop = now;
   timer.tick();
-  window.requestAnimationFrame(loop);
 }
 
 function clearTick() {

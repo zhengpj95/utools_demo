@@ -1,5 +1,8 @@
 // main.js
 
+/**
+ * @type {{x: number, y: number}[]}
+ */
 const pointList = [];
 
 const btnStart = document.querySelector("#btnStart");
@@ -9,10 +12,10 @@ btnStart.onclick = function (e) {
   const inputTime2 = document.querySelector("#inputTime2");
   const cnt = inputTime2.value;
   if (!pointList.length) {
-    utools.showNotification(`没有获取位置，无法开启!`);
+    showModelData(`没有获取位置，无法开启，请先获取坐标位置信息!`);
     return;
   }
-  window.main(time, cnt);
+  window.mainFunc(time, cnt);
 };
 
 const btnGetPoint = document.querySelector("#btnGetPoint");
@@ -26,16 +29,34 @@ btnClearPoint.onclick = function (e) {
   if (spanEle?.lastChild) {
     spanEle.removeChild(spanEle.lastChild);
     pointList.pop();
-    utools.showNotification("清除最后一个位置成功！");
+    showModelData("清除最后一个位置成功！");
   }
 };
 
+/**
+ * 添加坐标点
+ * @param {string} hex
+ * @param {{x: number, y: number}} point
+ * @returns {void}
+ */
 function addPoint(hex, point) {
   const spanEle = document.querySelector("#pointInfo");
   const inputEle = document.createElement("input");
   inputEle.className = `col-8`;
   inputEle.type = "text";
-  inputEle.value = `${pointList.length}: ` + ("hex: " + hex).padEnd(15, " ") + `point: { x:${point.x}, y:${point.y} }`;
+  inputEle.value = `${pointList.length}: ` + `point: { x: ${point.x}, y: ${point.y} }`;
   spanEle.appendChild(inputEle);
   pointList.push(point);
+}
+
+/**
+ * @param {string} text
+ * @returns {void}
+ */
+function showModelData(text) {
+  const myModal = new bootstrap.Modal("#exampleModal", {
+    keyboard: false
+  });
+  document.querySelector("#modelContent").innerHTML = text;
+  myModal.show();
 }
